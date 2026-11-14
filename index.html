@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff6b35">
+<title>Phượng Hoàng Học Tập</title>
+<style>
+:root{--orange:#ff6b35;--red:#d93636;--gold:#ffbf3f;--cream:#fff8eb;--ink:#492b25;--green:#5baf75;--shadow:0 12px 30px #8b3b241c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Nunito,"Trebuchet MS",Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,#fff4df,#fffaf2 48%,#fff1e4);min-height:100vh}
+button{font:inherit;cursor:pointer;border:0}.wrap{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:#fffaf0ed;backdrop-filter:blur(12px);border-bottom:1px solid #f4dfc8}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:1000;font-size:clamp(17px,2vw,23px)}
+.logo{width:52px;height:52px;border-radius:17px;background:linear-gradient(145deg,#ffcf52,#ff653c);display:grid;place-items:center;font-size:32px;box-shadow:0 5px 0 #d94b2d}
+nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}nav button{padding:10px 13px;border-radius:999px;background:transparent;color:#754c3d;font-weight:800}nav button:hover,nav button.active{background:#ffe0b8;color:#b63825}
+.hero{padding:45px 0 30px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+.eyebrow{display:inline-block;background:#ffebc7;color:#a84a26;padding:8px 14px;border-radius:99px;font-weight:900;font-size:13px}
+h1{font-size:clamp(34px,5vw,58px);line-height:1.08;margin:16px 0;color:#a92e27;letter-spacing:-1.5px}
+.hero p{font-size:18px;line-height:1.65;color:#76584b;max-width:620px}
+.primary{background:linear-gradient(135deg,#ff7c38,#e94435);color:white;padding:14px 22px;border-radius:16px;font-weight:1000;box-shadow:0 6px 0 #b9362c,0 10px 20px #d94b2d26;transition:.18s}
+.primary:hover{transform:translateY(-2px)}.secondary{background:#fff;border:2px solid #ffd7ad;color:#9c4329;padding:12px 18px;border-radius:14px;font-weight:900}
+.hero-art{min-height:285px;border-radius:34px;background:radial-gradient(circle at 50% 35%,#fff7c9 0 18%,transparent 19%),linear-gradient(145deg,#ffcf68,#ff8a49 55%,#df443b);display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.phoenix{font-size:clamp(130px,20vw,210px);filter:drop-shadow(0 12px 7px #8d321b50);animation:float 3s ease-in-out infinite}
+.spark{position:absolute;font-size:28px;animation:float 2.5s ease-in-out infinite}.s1{top:22px;left:25px}.s2{right:28px;top:50px;animation-delay:.7s}.s3{bottom:25px;left:45px;animation-delay:1s}
+@keyframes float{50%{transform:translateY(-10px) rotate(3deg)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:5px 0 35px}.stat{background:white;border:1px solid #f7dfc6;border-radius:20px;padding:16px;text-align:center;box-shadow:var(--shadow)}.stat b{display:block;font-size:26px;color:#d94a32}.stat span{font-size:13px;font-weight:800;color:#896657}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:32px 0 16px}.section-head h2{margin:0;font-size:clamp(23px,3vw,32px);color:#9d352b}.section-head p{margin:5px 0 0;color:#896657}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{background:#fff;border:1px solid #f4dfcb;border-radius:23px;padding:20px;box-shadow:var(--shadow);transition:.2s;display:flex;flex-direction:column;min-height:210px}.card:hover{transform:translateY(-4px)}.card .emoji{font-size:42px}.card h3{margin:10px 0 6px;font-size:20px}.card p{margin:0 0 16px;color:#806354;line-height:1.5;flex:1}.card button{align-self:flex-start;background:#fff0d8;color:#a4422c;padding:10px 14px;border-radius:12px;font-weight:900}.card.feature{border:2px solid #ffbd55;background:linear-gradient(160deg,#fff,#fff6df)}
+.panel{display:none;background:#fff;border:1px solid #f4dfcb;border-radius:26px;padding:clamp(18px,3vw,30px);margin:25px 0 45px;box-shadow:var(--shadow)}.panel.show{display:block}.panel-top{display:flex;justify-content:space-between;align-items:center;gap:12px}.panel h2{margin:0;color:#a4372d}.muted{color:#896657;line-height:1.6}
+.gamebox{margin-top:18px;background:linear-gradient(145deg,#fff7df,#fff0d7);border-radius:22px;padding:20px;text-align:center}.game-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-weight:900;color:#94502f}.track{height:13px;background:#f5d7b7;border-radius:99px;overflow:hidden;margin:16px 0}.track div{height:100%;width:0;background:linear-gradient(90deg,#ffb52e,#f05b36);transition:width .3s}
+.bunny-road{font-size:clamp(25px,5vw,42px);display:flex;align-items:center;justify-content:space-between;background:#e8f4d9;border-radius:17px;padding:12px 16px;margin:14px 0}.question{font-size:clamp(19px,3vw,25px);font-weight:1000;margin:20px auto;max-width:700px}.answers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:650px;margin:0 auto}.answer{padding:15px 8px;background:#fff;border:2px solid #f1cda7;border-radius:15px;font-size:21px;font-weight:1000;color:#9d422c}.answer:hover{background:#fff0d5;border-color:#f5a94c}.answer:disabled{cursor:default;opacity:.85}.feedback{min-height:30px;font-weight:1000;margin:15px 0}.next{margin-top:8px}
+.subjects{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.subject{background:#fff7e9;border:1px solid #f3d9bb;border-radius:17px;padding:15px;text-align:center;font-weight:900;color:#814c36}
+footer{text-align:center;padding:25px 0 35px;color:#9b7765;font-size:14px}
+.hide{display:none!important}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-art{min-height:220px}.cards{grid-template-columns:repeat(2,1fr)}.subjects{grid-template-columns:repeat(2,1fr)}nav{justify-content:center}.top{flex-direction:column}}
+@media(max-width:520px){.cards{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px 6px}.stat b{font-size:21px}.answers{grid-template-columns:repeat(2,1fr)}.hero{padding-top:28px}.top{gap:8px}nav button{padding:8px 10px;font-size:13px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap top">
+  <a class="brand" href="#" onclick="goHome();return false"><span class="logo">🔥</span><span>PHƯỢNG HOÀNG<br>HỌC TẬP</span></a>
+  <nav aria-label="Điều hướng chính">
+   <button class="active" data-nav="home" onclick="goHome()">Trang chủ</button>
+   <button data-nav="games" onclick="showSection('games')">Kho game</button>
+   <button data-nav="math" onclick="showSection('math')">Toán</button>
+   <button data-nav="vietnamese" onclick="showSection('vietnamese')">Tiếng Việt</button>
+   <button data-nav="english" onclick="showSection('english')">Tiếng Anh</button>
+  </nav>
+ </div>
+</header>
+<main class="wrap">
+ <section id="home">
+  <div class="hero">
+   <div>
+    <span class="eyebrow">🌟 HỌC VUI MỖI NGÀY – KHÁM PHÁ MỖI NGÀY</span>
+    <h1>Chắp cánh tri thức,<br>thắp sáng tương lai!</h1>
+    <p>Chào mừng bạn đến với Phượng Hoàng Học Tập – nơi mỗi bài học là một chuyến phiêu lưu. Cùng học Toán, Tiếng Việt, Tiếng Anh và khám phá thế giới qua trò chơi tương tác nhé!</p>
+    <button class="primary" onclick="showSection('games')">🎮 Khám phá kho game</button>
+   </div>
+   <div class="hero-art" aria-label="Biểu tượng phượng hoàng lửa"><span class="spark s1">✨</span><span class="spark s2">⭐</span><span class="spark s3">🔥</span><div class="phoenix">🦅</div></div>
+  </div>
+  <div class="stats">
+   <div class="stat"><b id="totalScore">0</b><span>⭐ Tổng điểm</span></div>
+   <div class="stat"><b id="totalGames">0</b><span>🎮 Lượt chơi</span></div>
+   <div class="stat"><b id="totalBadges">0</b><span>🏅 Huy hiệu</span></div>
+  </div>
+  <div class="section-head"><div><h2>🌈 Bắt đầu hành trình</h2><p>Chọn môn học bạn muốn khám phá hôm nay.</p></div></div>
+  <div class="cards">
+   <article class="card feature"><div class="emoji">🎮</div><h3>Kho game tương tác</h3><p>Vừa chơi vừa học qua những thử thách vui nhộn.</p><button onclick="showSection('games')">Vào kho game →</button></article>
+   <article class="card"><div class="emoji">➕</div><h3>Toán học</h3><p>Luyện tập phép tính và tư duy logic theo từng cấp độ.</p><button onclick="showSection('math')">Khám phá →</button></article>
+   <article class="card"><div class="emoji">📚</div><h3>Tiếng Việt</h3><p>Khám phá chữ cái, từ ngữ và câu văn.</p><button onclick="showSection('vietnamese')">Khám phá →</button></article>
+   <article class="card"><div class="emoji">🔤</div><h3>Tiếng Anh</h3><p>Làm quen từ vựng và mẫu câu tiếng Anh cơ bản.</p><button onclick="showSection('english')">Khám phá →</button></article>
+   <article class="card"><div class="emoji">🔢</div><h3>Nhận diện số</h3><p>Nhận biết các con số qua hình ảnh sinh động.</p><button onclick="showSection('numbers')">Khám phá →</button></article>
+   <article class="card"><div class="emoji">🐶</div><h3>Thế giới quanh em</h3><p>Nhận diện con vật, phương tiện và đồ vật quen thuộc.</p><button onclick="showSection('world')">Khám phá →</button></article>
+  </div>
+ </section>
+
+ <section id="games" class="panel">
+  <div class="panel-top"><div><h2>🎮 Kho game Phượng Hoàng</h2><p class="muted">Chọn trò chơi để bắt đầu thử thách.</p></div><button class="secondary" onclick="goHome()">← Trang chủ</button></div>
+  <div class="cards">
+   <article class="card feature"><div class="emoji">🐰🥕</div><h3>Thỏ Con Gom Cà Rốt</h3><p>Trả lời đúng câu hỏi Toán để giúp thỏ tiến đến vườn cà rốt. Có 10 câu mỗi lượt chơi.</p><button onclick="startRabbitGame()">Chơi ngay →</button></article>
+   <article class="card"><div class="emoji">🐝🍯</div><h3>Đổ Mật Vào Tổ Ong</h3><p>Trò chơi luyện tập đang được chuẩn bị.</p><button onclick="comingSoon()">Sắp ra mắt</button></article>
+   <article class="card"><div class="emoji">🚀🪐</div><h3>Phi Hành Gia Toán Học</h3><p>Trò chơi luyện tập đang được chuẩn bị.</p><button onclick="comingSoon()">Sắp ra mắt</button></article>
+  </div>
+ </section>
+
+ <section id="math" class="panel"><div class="panel-top"><h2>➕ Góc Toán học</h2><button class="secondary" onclick="goHome()">← Trang chủ</button></div><p class="muted">Chọn trò chơi để luyện phép cộng và phép trừ một cách vui vẻ.</p><div class="cards"><article class="card feature"><div class="emoji">🐰🥕</div><h3>Thỏ Con Gom Cà Rốt</h3><p>Luyện cộng, trừ và thử thách theo cấp độ.</p><button onclick="startRabbitGame()">Bắt đầu học →</button></article></div></section>
+ <section id="vietnamese" class="panel"><div class="panel-top"><h2>📚 Góc Tiếng Việt</h2><button class="secondary" onclick="goHome()">← Trang chủ</button></div><p class="muted">Các hoạt động nhận diện chữ cái, ghép vần và luyện đọc sẽ được bổ sung.</p><div class="subjects"><div class="subject">🔠 Chữ cái</div><div class="subject">🧩 Ghép vần</div><div class="subject">📝 Từ ngữ</div><div class="subject">📖 Luyện đọc</div></div></section>
+ <section id="english" class="panel"><div class="panel-top"><h2>🔤 English Corner</h2><button class="secondary" onclick="goHome()">← Trang chủ</button></div><p class="muted">Làm quen tiếng Anh qua chủ đề gần gũi.</p><div class="subjects"><div class="subject">👋 Greetings</div><div class="subject">🎨 Colors</div><div class="subject">🐾 Animals</div><div class="subject">🍎 Food</div></div></section>
+ <section id="numbers" class="panel"><div class="panel-top"><h2>🔢 Nhận diện số</h2><button class="secondary" onclick="goHome()">← Trang chủ</button></div><p class="muted">Nhận diện số qua hình ảnh và hoạt động tương tác sẽ được bổ sung.</p></section>
+ <section id="world" class="panel"><div class="panel-top"><h2>🌍 Khám phá thế giới</h2><button class="secondary" onclick="goHome()">← Trang chủ</button></div><div class="subjects"><div class="subject">🐶 Con vật</div><div class="subject">🚗 Xe cộ</div><div class="subject">🏠 Đồ vật</div><div class="subject">🌳 Thiên nhiên</div></div></section>
+
+ <section id="rabbitGame" class="panel">
+  <div class="panel-top"><div><h2>🐰 Thỏ Con Gom Cà Rốt</h2><p class="muted">Trả lời đúng để giúp thỏ tiến về phía vườn cà rốt!</p></div><button class="secondary" onclick="showSection('games')">← Kho game</button></div>
+  <div class="gamebox">
+   <div class="game-meta"><span>⭐ Điểm: <b id="roundScore">0</b></span><span>🧩 Câu: <b id="roundNumber">1</b>/10</span><span>🥕 Đã gom: <b id="carrotCount">0</b></span></div>
+   <div class="track"><div id="progressBar"></div></div>
+   <div class="bunny-road"><span id="bunny">🐰</span><span>🌼 🌿 🌼 🌿</span><span>🥕🥕🥕</span></div>
+   <div id="question" class="question">Sẵn sàng chưa?</div>
+   <div id="answers" class="answers"></div>
+   <div id="feedback" class="feedback" aria-live="polite"></div>
+   <button id="nextButton" class="primary next hide" onclick="nextQuestion()">Câu tiếp theo →</button>
+   <button id="restartButton" class="primary hide" onclick="startRabbitGame()">Chơi lại ↻</button>
+  </div>
+ </section>
+</main>
+<footer>🔥 Phượng Hoàng Học Tập · Học vui – Tiến bộ mỗi ngày</footer>
+<script>
+const sections=["games","math","vietnamese","english","numbers","world","rabbitGame"];
+let score=0,questionIndex=0,carrots=0,correctAnswer=0,locked=false;
+function readStats(){try{return {score:+localStorage.getItem("phScore")||0,games:+localStorage.getItem("phGames")||0,badges:+localStorage.getItem("phBadges")||0}}catch(e){return {score:0,games:0,badges:0}}}
+function saveStats(){try{localStorage.setItem("phScore",stats.score);localStorage.setItem("phGames",stats.games);localStorage.setItem("phBadges",stats.badges)}catch(e){}}
+let stats=readStats();
+function updateStats(){document.getElementById("totalScore").textContent=stats.score;document.getElementById("totalGames").textContent=stats.games;document.getElementById("totalBadges").textContent=stats.badges}
+function setNav(key){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.nav===key))}
+function hideAll(){document.getElementById("home").classList.add("hide");sections.forEach(id=>document.getElementById(id).classList.remove("show"))}
+function goHome(){hideAll();document.getElementById("home").classList.remove("hide");setNav("home");window.scrollTo({top:0,behavior:"smooth"})}
+function showSection(id){hideAll();document.getElementById(id).classList.add("show");setNav(id==="games"?"games":id);window.scrollTo({top:0,behavior:"smooth"})}
+function comingSoon(){alert("Trò chơi này đang được chuẩn bị. Hẹn gặp bạn ở phiên bản tiếp theo nhé!")}
+function shuffle(a){return a.sort(()=>Math.random()-.5)}
+function makeQuestion(){
+ const level=questionIndex<4?1:questionIndex<7?2:3;
+ let a,b,op;
+ if(level===1){op=Math.random()<.65?"+":"-";a=1+Math.floor(Math.random()*9);b=1+Math.floor(Math.random()*(op==="+"?10-a:a));}
+ else if(level===2){op=Math.random()<.55?"+":"-";a=10+Math.floor(Math.random()*11);b=1+Math.floor(Math.random()*(op==="+"?20-a:a));}
+ else{op=Math.random()<.5?"+":"-";a=15+Math.floor(Math.random()*26);b=1+Math.floor(Math.random()*(op==="+"?50-a:a));}
+ correctAnswer=op==="+"?a+b:a-b;
+ return {text:`🐰 Thỏ có ${a} củ cà rốt, ${op==="+"?"nhặt thêm":"tặng bạn"} ${b} củ. Thỏ có tất cả bao nhiêu củ?`,level};
+}
+function startRabbitGame(){score=0;questionIndex=0;carrots=0;showSection("rabbitGame");document.getElementById("roundScore").textContent=0;document.getElementById("carrotCount").textContent=0;document.getElementById("restartButton").classList.add("hide");newQuestion()}
+function newQuestion(){
+ locked=false;document.getElementById("nextButton").classList.add("hide");
+ document.getElementById("feedback").textContent="";
+ document.getElementById("roundNumber").textContent=questionIndex+1;
+ document.getElementById("progressBar").style.width=(questionIndex*10)+"%";
+ document.getElementById("bunny").textContent="🐰";
+ const q=makeQuestion();document.getElementById("question").textContent=q.text+` (Cấp ${q.level})`;
+ let options=new Set([correctAnswer]);while(options.size<4){let n=correctAnswer+Math.floor(Math.random()*9)-4;if(n>=0)options.add(n)}
+ document.getElementById("answers").innerHTML="";
+ shuffle([...options]).forEach(n=>{const b=document.createElement("button");b.className="answer";b.textContent=n;b.onclick=()=>checkAnswer(n,b);document.getElementById("answers").appendChild(b)});
+}
+function checkAnswer(n,button){
+ if(locked)return;locked=true;
+ document.querySelectorAll(".answer").forEach(b=>b.disabled=true);
+ if(n===correctAnswer){score+=10;carrots++;document.getElementById("bunny").textContent="🐰➡️";document.getElementById("feedback").textContent="🎉 Chính xác! Thỏ nhặt được cà rốt rồi!";document.getElementById("feedback").style.color="#32834c";button.style.background="#e4f7df";button.style.borderColor="#66b77b"}
+ else{document.getElementById("feedback").textContent=`Chưa đúng rồi! Đáp án đúng là ${correctAnswer}. Cố gắng ở câu tiếp theo nhé!`;document.getElementById("feedback").style.color="#c34b35";button.style.background="#ffe8e2"}
+ document.getElementById("roundScore").textContent=score;document.getElementById("carrotCount").textContent=carrots;
+ document.getElementById("nextButton").textContent=questionIndex===9?"Xem kết quả 🏆":"Câu tiếp theo →";document.getElementById("nextButton").classList.remove("hide");
+}
+function nextQuestion(){
+ questionIndex++;
+ if(questionIndex>=10){finishGame();return}
+ newQuestion()
+}
+function finishGame(){
+ document.getElementById("progressBar").style.width="100%";
+ document.getElementById("question").textContent=`🏆 Hoàn thành thử thách! Bạn đạt ${score}/100 điểm và giúp thỏ gom ${carrots} củ cà rốt!`;
+ document.getElementById("answers").innerHTML="";
+ document.getElementById("feedback").textContent=score>=70?"Tuyệt vời! Bạn đã nhận được một huy hiệu!":"Cảm ơn bạn đã tham gia. Hãy luyện tập thêm để đạt điểm cao hơn nhé!";
+ document.getElementById("nextButton").classList.add("hide");
+ stats.score+=score;stats.games++;if(score>=70)stats.badges++;saveStats();updateStats();
+ document.getElementById("restartButton").classList.remove("hide");
+}
+updateStats();
+</script>
+</body>
+</html>
