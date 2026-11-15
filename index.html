@@ -980,6 +980,178 @@ document.querySelectorAll('img[data-asset]').forEach((img) => { img.src = PHOENI
 </script>
 <style>
 .american-world-note{padding:12px 15px;margin:0 0 12px;border-radius:14px;background:#edf6ff;border:1px solid #c7e0f7;color:#174b7b;font-weight:650;}
+
+/* PHUONG HOANG - restore the original glossy 3D artwork and image-led navigation */
+.site-header{
+  background:linear-gradient(180deg,rgba(255,249,239,.98),rgba(255,244,225,.96));
+  border-bottom:2px solid #efc47a;
+  box-shadow:0 7px 20px rgba(143,66,27,.10);
+}
+.top{
+  min-height:112px;
+  padding:7px 0 9px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px 16px;
+  flex-wrap:wrap;
+}
+.brand{flex:0 0 190px;min-width:160px;display:flex;align-items:center;justify-content:flex-start}
+.brand img{
+  width:190px;height:124px;max-width:100%;object-fit:contain;display:block;
+  filter:drop-shadow(0 5px 5px rgba(126,42,18,.18));
+}
+.nav{
+  order:2;flex:1 1 700px;min-width:0;display:flex;align-items:center;
+  justify-content:flex-end;gap:4px;flex-wrap:wrap;
+}
+.nav button.nav-image{
+  width:clamp(76px,7.6vw,108px);height:76px;padding:1px;
+  border-radius:18px;background:transparent;display:grid;place-items:center;
+}
+.nav button.nav-image img{
+  width:100%;height:100%;object-fit:contain;display:block;
+  filter:drop-shadow(0 4px 3px rgba(113,46,18,.12));
+}
+.nav button.nav-image.active{background:linear-gradient(180deg,rgba(255,220,140,.44),rgba(255,248,232,0));box-shadow:inset 0 -3px 0 #f4b447}
+.nav button.nav-text{
+  padding:10px 13px;border-radius:999px;background:linear-gradient(180deg,#fff7df,#ffe7b7);
+  border:1px solid #efcc8c;color:#91412b;font-weight:1000;
+  box-shadow:0 3px 0 #e9c27d;font-size:13px;
+}
+.nav button.nav-text:hover{transform:translateY(-2px)}
+.sound-controls{
+  order:3;flex:1 0 100%;display:flex;justify-content:flex-end;align-items:center;
+  gap:7px;margin-top:-5px;padding:0 2px 2px;
+}
+.sound-toggle{
+  border-radius:999px;padding:7px 12px;background:linear-gradient(180deg,#fffefa,#fff0d4);
+  border:1px solid #f0d09a;color:#88412d;font-size:11px;font-weight:1000;
+  box-shadow:0 2px 0 #e8c889;
+}
+.menu-toggle{order:1}
+.hero.hero-home{
+  grid-template-columns:minmax(0,1.04fr) minmax(360px,.96fr);
+  gap:28px;padding:34px 0 25px;min-height:410px;
+}
+.hero-copy h1{font-size:clamp(42px,5.1vw,68px);line-height:1.02;text-shadow:0 2px 0 rgba(255,255,255,.65)}
+.hero-art{
+  min-height:365px;border-radius:42px;
+  background:radial-gradient(circle at 50% 44%,#fff8ce 0 20%,#ffd36f 21%,#ff9b4a 58%,#ed5137 100%);
+  border:3px solid #ffc862;box-shadow:inset 0 0 0 8px rgba(255,231,158,.34),0 19px 38px rgba(177,72,35,.19);
+}
+.hero-aura{width:80%;background:radial-gradient(circle,#fff9d8 0,rgba(255,224,124,.5) 48%,transparent 72%)}
+.phoenix-art{
+  width:min(94%,470px);height:330px;object-fit:contain;
+  filter:drop-shadow(0 14px 10px rgba(105,38,16,.32));
+  animation:phoenixFloat 3.4s ease-in-out infinite;
+}
+.mascot-caption{background:linear-gradient(180deg,#fff9e9,#ffe8bc);border:1px solid #ffd58a;box-shadow:0 4px 10px rgba(118,51,19,.18)}
+.portal-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));gap:13px 18px;
+  align-items:center;margin:14px 0 28px;
+}
+.portal-tile{
+  min-height:0;padding:3px 4px 5px;gap:0;border:0;border-radius:0;
+  background:transparent;box-shadow:none;backdrop-filter:none;
+  transform:translateZ(0);transition:transform .2s ease,filter .2s ease;
+}
+.portal-tile:hover{transform:translateY(-5px) scale(1.025);box-shadow:none;filter:drop-shadow(0 9px 6px rgba(119,49,17,.18))}
+.portal-tile:active{transform:translateY(1px) scale(.98)}
+.portal-tile img{
+  width:100%;height:clamp(104px,11vw,150px);object-fit:contain;
+  filter:drop-shadow(0 5px 4px rgba(117,48,20,.17));
+}
+.portal-title,.portal-tile small{display:none}
+.discovery-tiles{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px 20px;margin:10px 0 28px}
+.discovery-tile,.discovery-tile-static{
+  padding:0;border:0;background:transparent;box-shadow:none;backdrop-filter:none;
+  transition:transform .2s ease,filter .2s ease;
+}
+.discovery-tile:hover{transform:translateY(-5px) scale(1.025);filter:drop-shadow(0 8px 5px rgba(119,49,17,.18))}
+.discovery-tile:active{transform:translateY(1px) scale(.98)}
+.discovery-tile img,.discovery-tile-static img{
+  width:100%;height:clamp(105px,12vw,155px);object-fit:contain;
+  filter:drop-shadow(0 5px 4px rgba(117,48,20,.16));
+}
+.discovery-tile span,.discovery-tile-static span{display:none}
+.stats .stat{border:1px solid #f2d49d;border-bottom:4px solid #efbf68;border-radius:20px;background:linear-gradient(180deg,#fffefa,#fff0d2);box-shadow:0 8px 18px rgba(124,54,20,.10)}
+/* A friendly 3D frame for learning prompts, without changing their content. */
+.question-card{
+  position:relative;overflow:hidden;padding:clamp(18px,3vw,27px);
+  border:2px solid #f4ce85;border-radius:25px;
+  background:linear-gradient(145deg,#fffefa 0%,#fff7e8 55%,#ffeecb 100%);
+  box-shadow:0 8px 0 #e9c27d,0 15px 28px rgba(130,67,29,.13);
+}
+.question-card:before{
+  content:"";position:absolute;left:-36px;top:-48px;width:130px;height:130px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,217,133,.38),rgba(255,217,133,0));pointer-events:none;
+}
+.question-card h4{position:relative;color:#873b27;font-size:clamp(19px,2.5vw,25px);line-height:1.42}
+.question-card .quiz-options{position:relative;gap:12px}
+.quiz-options button,.lesson-view .quiz-options button{
+  min-height:58px;border:2px solid #edcf9e;border-radius:17px;
+  background:linear-gradient(180deg,#fffefa,#fff0d7);color:#75402c;font-weight:1000;
+  box-shadow:0 5px 0 #e6c38d,0 8px 13px rgba(125,71,34,.08);
+  transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
+}
+.quiz-options button:hover:not(:disabled){transform:translateY(-3px);filter:saturate(1.08);box-shadow:0 8px 0 #e6c38d,0 12px 16px rgba(125,71,34,.12)}
+.quiz-options button:active:not(:disabled){transform:translateY(2px);box-shadow:0 2px 0 #e6c38d}
+.quiz-options button.correct,.quiz-options button.is-correct{background:linear-gradient(180deg,#edffe8,#d6f6cd);border-color:#82c97a;box-shadow:0 5px 0 #a8d49d}
+.quiz-options button.wrong,.quiz-options button.is-wrong{background:linear-gradient(180deg,#fff1eb,#ffe0d4);border-color:#e9a08d;box-shadow:0 5px 0 #e7b8aa}
+.world-question{
+  border:2px solid #fff4d9;border-radius:25px;
+  background:linear-gradient(145deg,#fffefa,#fff5e2);
+  box-shadow:0 8px 0 rgba(125,83,39,.18),0 14px 25px rgba(77,53,27,.12);
+}
+.world-answer{
+  border-radius:18px;min-height:64px;
+  background:linear-gradient(180deg,#fffefa,#fff0d7);
+  border:2px solid #eac58d;color:#70412b;
+  box-shadow:0 5px 0 #dfbd8b,0 8px 13px rgba(91,56,27,.08);
+}
+.world-answer:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 8px 0 #dfbd8b,0 12px 16px rgba(91,56,27,.12)}
+.world-hub-card,.activity-card{
+  border:2px solid #f1d3a1;border-radius:23px;
+  background:linear-gradient(150deg,#fffefa,#fff2d9);
+  box-shadow:0 7px 0 #e9ca91,0 13px 22px rgba(115,66,31,.10);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.world-hub-card:hover,.activity-card:hover{transform:translateY(-4px);box-shadow:0 10px 0 #e9ca91,0 17px 25px rgba(115,66,31,.14)}
+@media(max-width:1050px){
+  .brand{flex-basis:165px}.brand img{width:165px;height:108px}
+  .nav{flex-basis:650px}.nav button.nav-image{width:clamp(70px,8vw,96px);height:68px}
+}
+@media(max-width:850px){
+  .top{justify-content:center}.brand{flex:0 0 160px}.nav{flex:1 1 100%;justify-content:center;order:2}.sound-controls{order:3;justify-content:center}
+  .hero.hero-home{grid-template-columns:1fr 1fr;gap:16px}.hero-art{min-height:290px}.phoenix-art{height:260px}
+  .portal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px}
+}
+@media(max-width:680px){
+  .top{min-height:0;justify-content:space-between;padding:7px 0}
+  .brand{flex:0 0 135px}.brand img{width:135px;height:90px}
+  .menu-toggle{display:block}
+  .nav{display:none;width:100%;flex:1 0 100%;order:4;justify-content:center;flex-wrap:wrap;padding:6px 0 10px}
+  .nav.open{display:flex}.nav button.nav-image{width:76px;height:58px}.nav button.nav-text{font-size:11px;padding:8px 10px}
+  .sound-controls{order:5;flex:1 0 100%;justify-content:center;margin:0;padding:2px 0 4px}
+  .hero.hero-home{grid-template-columns:1fr;padding:17px 0 15px;gap:14px}
+  .hero-art{grid-row:1;min-height:255px;border-radius:28px}.hero-copy{grid-row:2}
+  .phoenix-art{height:235px;width:94%}.hero-copy h1{font-size:clamp(36px,9vw,51px)}
+  .portal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 12px}
+  .portal-tile img{height:clamp(92px,27vw,130px)}
+  .discovery-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}
+  .discovery-tile img,.discovery-tile-static img{height:clamp(95px,29vw,132px)}
+}
+@media(max-width:420px){
+  .brand{flex-basis:120px}.brand img{width:120px;height:82px}
+  .nav button.nav-image{width:68px;height:52px}.nav button.nav-text{padding:7px 8px}
+  .hero-art{min-height:225px}.phoenix-art{height:210px}
+  .sound-toggle{font-size:10px;padding:6px 9px}
+}
+@media(prefers-reduced-motion:reduce){
+  .phoenix-art,.fire-spark,.portal-tile,.discovery-tile,.world-hub-card,.activity-card{animation:none!important;transition:none!important}
+}
+
 </style>
 
 <script>
